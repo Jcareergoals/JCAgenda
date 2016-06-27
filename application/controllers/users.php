@@ -4,39 +4,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class users extends CI_Controller {
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct(); 
 		$this->load->model('user');
 	}
 	public function index()
 	{
 		$this->load->view('login');
 	}
-	public function add()
+	public function register()
 	{
-		// validate user input for registration
 		$result = $this->user->validate($this->input->post());
 		if($result == 'valid')
 		{	
-			// register user if input fields meet requirments
-			$post = $this->input->post();
-			if(!$this->user->get_user_by_username($post))
+			$date = $this->user->check_date($this->input->post());
+			if($date)
 			{
-				$this->user->register($post);
-				$user = $this->user->get_user_by_username($post);
-				$this->session->set_userdata('user', $user);
-				// redirect to _____________________________________
+				$post = $this->input->post();
+				if(!$this->user->get_user_by_email($post))
+				{
+					$this->user->register($post); 
+					$user = $this->user->get_user_by_email($post); 
+					$this->session->set_userdata('user', $user);
+					redirect('/appointments');
+				}
+				else 
+				{
+					$this->session->set_flashdata('errors', '<p>This email is already in use. Please select another one.</p>');
+					redirect('/');
+				}
+			} else {
+				$this->session->set_flashdata('errors', '<p>Please enter a valid date</p>'); 
 				redirect('/');
 			}
-			else 
-			{
-				$this->session->set_flashdata('errors', '<p>Please choose another username</p>');
-				redirect('/users');
-			}
+			
 		}
 		else 
 		{
 			$this->session->set_flashdata('errors', $result);
-			redirect('/users');
+			redirect('/');
 		}
 	}
 	public function login()
@@ -44,28 +49,28 @@ class users extends CI_Controller {
 		$result = $this->user->validate($this->input->post());
 		if($result == 'valid')
 		{
-			$data['username'] = $this->input->post('username_2');
-			$user = $this->user->get_user_by_username($data);
+			$data['email'] = $this->input->post('email_2');
+			$user = $this->user->get_user_by_email($data);
 			if($user && $user['password'] == $this->input->post('password_2'))
 			{
 				$this->session->set_userdata('user', $user);
-				redirect('/travels');
+				redirect('/appointments');
 			}
 			else 
 			{
-				$this->session->set_flashdata('errors', "<p>Username and Password don't match</p>");
-				redirect('/users');
+				$this->session->set_flashdata('errors', "<p>Email and password do not match</p>");
+				redirect('/');
 			}
 		}
 		else 
 		{
 			$this->session->set_flashdata('errors', $result);
-			redirect('/users');
+			redirect('/');
 		}
 	}
 	public function logout()
 	{
 		$this->session->sess_destroy(); 
-		redirect('/users');
+		redirect('/');
 	}
 }
