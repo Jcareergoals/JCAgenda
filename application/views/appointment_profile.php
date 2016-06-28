@@ -8,7 +8,6 @@
 		<meta name="author" content="Jose Chery">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./../assets/img/event-icon.png">
-
  		<!-- jQuery CDN -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
  		<!-- Latest compiled and minified CSS -->
@@ -46,45 +45,68 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12 agenda-table">
 					<table class='table appointments table-bordered table-striped'>
 						<tr>
 							<th>Tasks</th>
-							<TH>Date</TH>
+							<th>Date</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
-						<?php 
-							foreach($appointments as $x)
-							{?>
-								<tr>
-									<td><?echo $x['tasks']?></td>
-									<td><?echo date("F d, Y", strtotime($x['date']))?></td>
-									<td><?echo $x['status']?></td>
-								<?
-									if($x['status'] == 'completed')
-									{?>
-										<td></td>
-									<?} 
-									else 
-									{?>
-										<td><a href=<?echo "/appointments/edit/".$x['appointment_id']?>>Edit</a>  <a href=<?echo "/appointments/delete/".$x['appointment_id'] ?>>Delete</a></td>
-									<?}
-								 ?>
-								</tr>
-							<?}
+						 <?php 
+						 	foreach($appointments as $x)
+						 	{
+						 		if(date("d", strtotime($x['date'])) == date('d'))
+						 		{
+						 			?>
+						 			<tr>
+						 				<td><?php echo $x['tasks']; ?></td>
+						 				<td><?php echo date("F d, Y", strtotime($x['date'])); ?></td>
+						 				<td><?php echo $x['status']; ?></td>
+						 				<?php 
+						 					if($x['status'] == 'completed')
+						 					{
+						 						?>
+						 							<td></td>
+						 						<?php
+						 					}
+						 					else 
+						 					{
+						 						?>
+						 							<td><a href=<?php echo "/appointments/edit/".$x['appointment_id'];?>>Edit</a> <a href=<?php echo "/appointments/delete/".$x['appointment_id'];?>>Delete</a></td>
+						 						<?php
+						 					}
+						 				 ?>
+						 			</tr>
+						 			<?php
+						 		}
+						 	}
 						 ?>
 					</table>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12 agenda-table">
 					<p>Your other appointments:</p>
 					<table class='table other table-bordered table-striped'>
 						<tr>
 							<th>Tasks</th>
 							<th>Date</th>
 						</tr>
+						<?php 
+							foreach($appointments as $b)
+							{
+								if(date("d", strtotime($b['date'])) != date('d'))
+								{
+									?>
+									<tr>
+										<td><?php echo $b['tasks']; ?></td>
+										<td><?php echo date("F d, Y", strtotime($b['date'])); ?></td>
+									</tr>
+									<?php
+								}
+							}
+						?>
 					</table>
 				</div>
 			</div>
