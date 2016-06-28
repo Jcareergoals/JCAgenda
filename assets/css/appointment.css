@@ -1,0 +1,69 @@
+* {padding: 0px; margin: 0px;}
+body {
+	background: url("./../img/desk-background.jpg") no-repeat fixed center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	padding: 20px; 
+}
+.container-fluid {
+	background-color: rgba(0,0,0,.2);
+	border-radius: 5px;
+	border: 1px solid black,; 
+	margin-top: 20px;
+	padding: 20px; 
+	overflow: auto; 
+	box-shadow: 4px 4px 9px black;
+	color: white; 
+}
+.header h2 {
+	text-align: center;
+	color: white; 
+}
+.header a {float: right;}
+.appointments {
+	max-width: 700px; 
+}
+.btn {
+	box-shadow: 2px 2px 5px black; 
+	float: right;
+	position: relative;
+	right: 15px; 
+	top: 10px;
+}
+.other {
+	max-width: 400px; 
+}
+table th {
+	background-color: rgb(100,100,100);
+	color: orange;
+	text-align: center;
+}
+tbody tr:nth-of-type(odd) td {
+	background-color: silver;
+	text-align: 
+}
+.form-section {
+	background-color: rgba(0,0,0,.1);
+	padding: 20px; 
+	border-radius: 5px; 
+	box-shadow: 0px 0px 5px black;
+}
+.form-section form h4 {text-align: center;}
+.form-section input, .form-section textarea {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+}
+.copyright p {
+	color: white; 
+	position: relative; 
+	/*bottom: 25px; */
+	top: 25px;
+	text-align: center;
+	font-weight: bold; 
+	text-shadow: 0px 0px 0px black; 
+}
+@media (min-width:768px){
+	.form-section {margin-left: 20px;}
+}
