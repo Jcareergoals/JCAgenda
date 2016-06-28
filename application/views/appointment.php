@@ -1,13 +1,13 @@
 <!DOCTYPE html>	
-	<?php 
-		date_default_timezone_set('America/New_York');
-		$user = $this->session->userdata('user'); 
-		$x = $this->session->userdata('appointment'); 
-	 ?>
-
 	<head>
-		<title>Login / Registration</title>
+		<title>JCAgenda - Event</title>
 		<meta charset="UTF-8">
+		<!-- SEO -->
+		<meta name="description" content="The new JCAgenda app is designed to save you time and help you make the most of everyday.">
+		<meta name="keywords" content="Schedule app, scheduler, appointment application, jose chery, full stack web developer Fort Myers">
+		<meta name="author" content="Jose Chery">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./../../assets/img/event-icon.png">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 		<!-- Latest compiled and minified CSS -->
@@ -22,6 +22,8 @@
 		<!-- jQuery UI -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
  		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+ 		<!-- Appointment Edit CSS  -->
+ 		<link rel="stylesheet" type="text/css" href="./../../assets/css/event_update.css">
  		<script>
  			$(document).ready(function(){
 				$('.datepicker').datepicker({
@@ -29,69 +31,48 @@
 				}); 
 			});
  		</script>
-		<style type="text/css">
-			* {
-				padding: 0px; 
-				margin: 0px; 
-			}
-			body {
-				background-color: rgb(245,245,245); 
-			}
-			.container {
-				background-color: white; 
-				border: 1px solid black; 
-				margin: 40px auto; 
-				padding: 20px; 
-				box-shadow: 2px 2px 7px black; 
-			}
-			.appointments {
-				max-width: 700px; 
-			}
-			.btn {
-				background-color: rgba(14,122,254,.8); 
-				border: black; 
-				box-shadow: 2px 2px 5px black; 
-				color: white; 
-				margin-top: 10px; 
-			}
-			.other {
-				max-width: 400px; 
-			}
-		</style>
+		<?php 
+			date_default_timezone_set('America/New_York');
+			$user = $this->session->userdata('user'); 
+			$x = $this->session->userdata('appointment'); 
+		 ?>
 	</head>
 	<body>
-		<div class="container">
+		<div class="col-xs-12 header">
+			<a href="/users/logout">Logout</a>
+			<a href="/appointments">Dashboard</a>
+			<h2>Update Appointment</h2>
+		</div>
+		<div class="container-fluid col-xs-12 col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
 			<div class="row">
-				<a href="/appointments"><p class='col-xs-offset-10 col-xs-1'>Dashboard</p></a>
-				<a href="/users/logout"><p class='col-xs-1'>Logout</p></a>
-			</div>
-			<div class="row">
-				<form action=<?php echo "/appointments/update/".$x['appointment_id']; ?> method='post' class='form form-horizontal col-xs-4'>
-					<p>Add Appointment:</p>
-					<div class="form-group">
-						<input type='hidden' name='created_by' value=<?php echo $user['id']; ?>>
-						<label for='date' class='control-label col-xs-2'>Date:</label>
-						<div class="col-xs-10">
-							<input type='text' name='date' id='date' class='form-control datepicker' value=<?php echo $x['date']?>>
+				<div class="col-xs-12 col-sm-6 col-lg-5 form-section">
+					<form action=<?php echo "/appointments/update/".$x['appointment_id']; ?> method='post' class='form form-horizontal'>
+						<h4>Edit Appointment:</h4>
+						<div class="form-group">
+							<input type='hidden' name='created_by' value=<?php echo $user['id']; ?>>
+							<label for='date' class='control-label col-xs-2'>Date:</label>
+							<div class="col-xs-6">
+								<input type='text' name='date' id='date' class='form-control datepicker' value=<?php echo $x['date'];?>>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for='status' class='control-label col-xs-2'>Status</label>
-						<div class="col-xs-4" name='status' >
-							<select name='status' class='form-control'>
-								<option value='pending'>Pending</option>
-								<option value='completed'>Completed</option>
-							</select>
+						<div class="form-group">
+							<label for='status' class='control-label col-xs-2'>Status</label>
+							<div class="col-xs-6" name='status' >
+								<select name='status' class='form-control'>
+									<option value='pending'>Pending</option>
+									<option value='completed'>Completed</option>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for='tasks' class="control-label col-xs-2">Tasks:</label>
-						<div class="col-xs-12">
-							<textarea id='tasks' name='tasks' class='form-control tasks' value=<?php echo $x["tasks"]?>></textarea>
+						<div class="form-group">
+							<label for='tasks' class="control-label col-xs-2">Tasks:</label>
+							<div class="col-xs-12">
+								<textarea type='text' id='tasks' name='tasks' class='form-control tasks'><?php echo $x["tasks"];?></textarea>
+							</div>
+							<button type='submit' class='btn btn-primary'>Add</button>
 						</div>
-						<button type='submit' class='btn col-xs-offset-10'>Add</button>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div> <!-- End Container -->
 	</body> 
