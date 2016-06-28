@@ -1,0 +1,45 @@
+* {padding: 0px; margin: 0px;}
+body {
+	background: url("./../img/office-background.JPG") no-repeat fixed center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	padding: 20px;
+}
+.container-fluid {
+	background-color: rgba(0,0,0,.2);
+	border-radius: 5px; 
+	border: 1px solid black; 
+	margin-top: 20px;
+	padding: 20px; 
+	overflow: auto; 
+	box-shadow: 4px 4px 9px black; 
+	color: white;
+}
+.header h2 {
+	text-align: center;
+	color: orange;
+	font-weight: bold; 
+	text-shadow: 0px 0px 1px black;
+}
+.header a {
+	float: right;
+	font-weight: bolder;
+	text-shadow: 0px 0px 0px black; 
+}
+.header a:nth-of-type(2) {margin-right: 20px;}
+.btn {
+	box-shadow: 2px 2px 5px black; 
+	margin-top: 10px;
+	margin-right: 15px;
+	float: right; 
+}
+.form-section {
+	background-color: rgba(0,0,0,.2);
+	padding: 20px; 
+	border-radius: 5px; 
+	box-shadow: 0px 0px 5px black;
+	margin-left: 10px;
+}
+.form-section h4 {text-align: center;}
