@@ -14,14 +14,24 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- jQuery UI -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
+		<script>
+			$(document).ready(function(){
+				$('.datepicker').datepicker({
+					maxDate: "-1Y", 
+					changeMonth: true, 
+					changeYear: true
+				}); 
+			}); 
+		</script>
 		<style type="text/css">
 			* {
 				padding: 0px; 
 				margin: 0px; 
 			}
-			body {
-				background-color: rgb(245,245,245); 
-			}
+			body {background-color: rgb(245,245,245);}
 			.container {
 				background-color: white; 
 				border: 1px solid black; 
@@ -38,15 +48,15 @@
 			}
 			.errors {
 				color: red; 
-				text-align: center; 
+				text-align: center;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-10 col-xs-offset-1">
-					<!-- $this->session->flashdata('errors') -->
+				<div class="col-xs-12">
+					<span class='errors'><?php echo $this->session->flashdata('errors'); ?></span>
 				</div>
 			</div>
 			<div class="row">
@@ -57,24 +67,12 @@
 			<div class="row">
 				<div class="col-sm-6 col-xs-12">
 					<h5 class='col-xs-12'>Register</h5>
-					<form action='/users/add' method='post' class='form form-horizontal'>
+					<form action='/users/register' method='post' class='form form-horizontal'>
 						<input type='hidden' name='form' value='registration'>
 						<div class="form-group">
-							<label for='f_name' class='control-label col-xs-3'>First Name:</label>
+							<label for='name' class='control-label col-xs-3'>Name:</label>
 							<div class='col-xs-9'>
-								<input type='text' name='first_name' id='f_name' class='form-control'>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for='l_name' class='control-label col-xs-3'>Last Name:</label>
-							<div class='col-xs-9'>
-								<input type='text' name='last_name' id='l_name' class='form-control'>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for='username' class='control-label col-xs-3'>User Name:</label>
-							<div class='col-xs-9'>
-								<input type='text' name='username' id='username' class='form-control'>
+								<input type='text' name='name' id='name' class='form-control'>
 							</div>
 						</div>
 						<div class="form-group">
@@ -89,6 +87,18 @@
 								<input type='password' name='confirm_password' id='confirm_password' class='form-control'>
 							</div>
 						</div>
+						<div class="form-group">
+							<label for='email' class='control-label col-xs-4'>Email Address:</label>
+							<div class="col-xs-8">
+								<input type='text' name='email' id='email' class='form-control'>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for='dob' class='control-label col-xs-4'>Date of Birth:</label>
+							<div class="col-xs-8">
+								<input type='text' class='form-control datepicker' name='dob' id='dob' placeholder='mm/dd/yyyy'>
+							</div>
+						</div>
 						<div class="col-xs-offset-10">
 							<input type='submit' value='Register' class='form-control submit'>
 						</div>
@@ -99,9 +109,9 @@
 					<form action='/users/login' method='post' class='form form-horizontal'>
 						<input type='hidden' name='form' value='login'>
 						<div class="form-group">
-							<label for='username_2' class='control-label col-xs-3'>User Name:</label>
+							<label for='email_2' class='control-label col-xs-3'>Email:</label>
 							<div class='col-xs-9'>
-								<input type='text' name='username_2' id='username_2' class='form-control'>
+								<input type='text' name='email_2' id='email_2' class='form-control'>
 							</div>
 						</div>
 						<div class="form-group">
