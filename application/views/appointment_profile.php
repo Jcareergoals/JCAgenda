@@ -7,7 +7,7 @@
 		<meta name="keywords" content="Schedule app, scheduler, appointment application, jose chery, full stack web developer Fort Myers">
 		<meta name="author" content="Jose Chery">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="./../assets/img/event-icon.png">
+		<link rel="shortcut icon" href="./../../assets/img/event-icon.png">
  		<!-- jQuery CDN -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
  		<!-- Latest compiled and minified CSS -->
@@ -34,14 +34,14 @@
 	</head>
 	<body>
 		<div class="header col-xs-12">
-			<a href="">Logout</a>
+			<a href="/users/logout">Logout</a>
 			<h2>JCAgenda</h2>
 		</div>
 		<div class="container-fluid col-xs-12 col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
 			<div class="row">
 				<div class="col-xs-12">
 					<h4><?php echo "Hello, ".$user['name']; ?></h4>
-					<p><? echo "Here are your appointments for today, ".date("F d, Y").":"; ?></p>
+					<p><?php echo "Here are your appointments for today, ".date("F d, Y").":"; ?></p>
 				</div>
 			</div>
 			<div class="row">
