@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
+	'hostname' => 'portfolio.catsrmnhafjl.us-east-1.rds.amazonaws.com',
+	'username' => 'jetblue1946',
+	'password' => '4416277q',
 	'database' => 'redbelt',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
