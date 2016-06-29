@@ -1,6 +1,6 @@
 <!DOCTYPE html>	
 	<head>
-		<title>JCAgenda - Event</title>
+		<title>JCAgendas - Event</title>
 		<meta charset="UTF-8">
 		<!-- SEO -->
 		<meta name="description" content="The new JCAgenda app is designed to save you time and help you make the most of everyday.">
@@ -8,6 +8,8 @@
 		<meta name="author" content="Jose Chery">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./../../assets/img/event-icon.png">
+ 		<!-- Appointment Edit CSS  -->
+ 		<link rel="stylesheet" type="text/css" href="./../../assets/css/event_update.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 		<!-- Latest compiled and minified CSS -->
@@ -22,8 +24,6 @@
 		<!-- jQuery UI -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
  		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
- 		<!-- Appointment Edit CSS  -->
- 		<link rel="stylesheet" type="text/css" href="./../../assets/css/event_update.css">
  		<script>
  			$(document).ready(function(){
 				$('.datepicker').datepicker({
@@ -39,14 +39,14 @@
 	</head>
 	<body>
 		<div class="col-xs-12 header">
-			<a href="/users/logout">Logout</a>
-			<a href="/appointments">Dashboard</a>
+			<a href="/Users/logout">Logout</a>
+			<a href="/Appointments">Dashboard</a>
 			<h2>Update Appointment</h2>
 		</div>
 		<div class="container-fluid col-xs-12 col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-lg-5 form-section">
-					<form action=<?php echo "/appointments/update/".$x['appointment_id']; ?> method='post' class='form form-horizontal'>
+					<form action=<?php echo "/Appointments/update/".$x['appointment_id']; ?> method='post' class='form form-horizontal'>
 						<h4>Edit Appointment:</h4>
 						<div class="form-group">
 							<input type='hidden' name='created_by' value=<?php echo $user['id']; ?>>

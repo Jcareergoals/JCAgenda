@@ -1,6 +1,6 @@
 <!DOCTYPE html>	
 	<head>
-		<title>JCAgenda - Dashboard</title>
+		<title>JCAgendas - Dashboard</title>
 		<meta charset="UTF-8">
 		<!-- SEO -->
 		<meta name="description" content="The new JCAgenda app is designed to save you time and help you make the most of everyday.">
@@ -8,6 +8,8 @@
 		<meta name="author" content="Jose Chery">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./../../assets/img/event-icon.png">
+		<!-- Login CSS -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
  		<!-- jQuery CDN -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
  		<!-- Latest compiled and minified CSS -->
@@ -20,7 +22,6 @@
 		<link rel="stylesheet" type="text/css" href="./../../assets/css/appointment.css">
 		<!-- jQuery UI & CDN library -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script>
  			$(document).ready(function(){
 				$('.datepicker').datepicker({minDate: "0d"}); 
@@ -34,8 +35,8 @@
 	</head>
 	<body>
 		<div class="header col-xs-12">
-			<a href="/users/logout">Logout</a>
-			<h2>JCAgenda</h2>
+			<a href="/Users/logout">Logout</a>
+			<h2>JCAgendas</h2>
 		</div>
 		<div class="container-fluid col-xs-12 col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
 			<div class="row">
@@ -73,7 +74,7 @@
 						 					else 
 						 					{
 						 						?>
-						 							<td><a href=<?php echo "/appointments/edit/".$x['appointment_id'];?>>Edit</a> <a href=<?php echo "/appointments/delete/".$x['appointment_id'];?>>Delete</a></td>
+						 							<td><a href=<?php echo "/Appointments/edit/".$x['appointment_id'];?>>Edit</a> <a href=<?php echo "/appointments/delete/".$x['appointment_id'];?>>Delete</a></td>
 						 						<?php
 						 					}
 						 				 ?>
@@ -113,7 +114,7 @@
 			<!-- FORM SECTION -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-lg-5 form-section">
-					<form action='/appointments/add' method='post' class='form form-horizontal'>
+					<form action='/Appointments/add' method='post' class='form form-horizontal'>
 						<h4>Add Appointment</h4>
 						<div class="form-group">
 							<input type='hidden' name='created_by' value=<?php echo $user['id']; ?>>
