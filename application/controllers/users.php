@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class users extends CI_Controller {
+class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct(); 
-		$this->load->model('user');
+		$this->load->model('User');
 	}
 	public function index()
 	{
@@ -13,19 +13,19 @@ class users extends CI_Controller {
 	}
 	public function register()
 	{
-		$result = $this->user->validate($this->input->post());
+		$result = $this->User->validate($this->input->post());
 		if($result == 'valid')
 		{	
-			$date = $this->user->check_date($this->input->post());
+			$date = $this->User->check_date($this->input->post());
 			if($date)
 			{
 				$post = $this->input->post();
-				if(!$this->user->get_user_by_email($post))
+				if(!$this->User->get_user_by_email($post))
 				{
-					$this->user->register($post); 
-					$user = $this->user->get_user_by_email($post); 
-					$this->session->set_userdata('user', $user);
-					redirect('/appointments');
+					$this->User->register($post); 
+					$user = $this->User->get_user_by_email($post); 
+					$this->session->set_userdata('user', $User);
+					redirect('/Appointments');
 				}
 				else 
 				{
@@ -46,15 +46,15 @@ class users extends CI_Controller {
 	}
 	public function login()
 	{
-		$result = $this->user->validate($this->input->post());
+		$result = $this->User->validate($this->input->post());
 		if($result == 'valid')
 		{
 			$data['email'] = $this->input->post('email_2');
-			$user = $this->user->get_user_by_email($data);
+			$user = $this->User->get_user_by_email($data);
 			if($user && $user['password'] == $this->input->post('password_2'))
 			{
 				$this->session->set_userdata('user', $user);
-				redirect('/appointments');
+				redirect('/Appointments');
 			}
 			else 
 			{

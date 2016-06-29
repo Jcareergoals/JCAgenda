@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class appointment extends CI_Model {
+class Appointment extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct(); 
@@ -23,7 +23,7 @@ class appointment extends CI_Model {
 		if($result == 'valid')
 		{
 			$date = $data['date']; 
-			if(strtotime($date) < date())
+			if(strtotime($date) < date("d"))
 			{
 				return 'check_date'; 
 			}

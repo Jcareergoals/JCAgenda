@@ -1,0 +1,45 @@
+* {padding: 0px; margin: 0px;}
+body {
+	background: url("./../img/login-background.jpg") no-repeat fixed center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	padding: 20px; 
+	font-family: tahoma;
+}
+.container-fluid {
+	background-color: rgba(0,0,0,.4);
+	border-radius: 5px; 
+	border: 1px solid black; 
+	margin-top: 20px;
+	padding: 20px; 
+	overflow: auto; 
+	box-shadow: 4px 4px 9px black; 
+	color: white;
+}
+.header h1, .copyright {
+	text-align: center;
+	color: white; 
+}
+.copyright {margin: 20px auto;}
+.copyright a {
+	color: orange;
+	font-weight: bold;
+}
+.register h4, .login h4, .errors {
+	text-align: center;
+}
+.errors-section {
+	max-height: 100px;
+	overflow: auto;
+}
+.form-group>.control-label {text-align: left;}
+.btn {float: right;}
+.container-fl {
+	background-color: white; 
+	border: 1px solid black; 
+	margin: 40px auto; 
+	padding: 20px; 
+	box-shadow: 2px 2px 7px black; 
+}
+.errors {color: red;}
